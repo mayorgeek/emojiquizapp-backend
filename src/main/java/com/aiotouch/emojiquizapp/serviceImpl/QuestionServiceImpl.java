@@ -9,7 +9,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -24,6 +23,7 @@ public class QuestionServiceImpl implements QuestionService {
         newQuestion.setOption1(question.getOption1());
         newQuestion.setOption2(question.getOption2());
         newQuestion.setOption3(question.getOption3());
+        newQuestion.setAnswer(question.getAnswer());
 
         return questionRepo.save(newQuestion);
     }
@@ -48,6 +48,7 @@ public class QuestionServiceImpl implements QuestionService {
         question.setOption1(oldQuestion.getOption1());
         question.setOption2(oldQuestion.getOption2());
         question.setOption3(oldQuestion.getOption3());
+        question.setAnswer(oldQuestion.getAnswer());
 
         questionRepo.save(question);
     }

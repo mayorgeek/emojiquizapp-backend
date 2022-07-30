@@ -22,4 +22,7 @@ public class QuestionModel {
     @NotNull
     private String option3;
 
+    @NotNull
+    private String answer;
+
 }

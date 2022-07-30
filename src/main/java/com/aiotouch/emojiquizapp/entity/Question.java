@@ -1,7 +1,6 @@
 package com.aiotouch.emojiquizapp.entity;
 
 import com.sun.istack.NotNull;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -34,5 +33,9 @@ public class Question {
     @NotNull
     @Column(name = "option_3")
     public String option3;
+
+    @NotNull
+    @Column(name = "answer")
+    public String answer;
 
 }

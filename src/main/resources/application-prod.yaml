@@ -1,7 +1,4 @@
 spring:
-  profiles:
-    active: ${PROFILE:prod}
-
   datasource:
     url: ${CLEARDB_DATABASE_URL}
     username: ${DATABASE_USERNAME}
