@@ -1,4 +1,12 @@
 spring:
+  profiles:
+    active: ${PROFILE:dev}
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/emojiquizapp
+    username: root
+    password: Adedorcas64#
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -6,3 +14,4 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         format_sql: true
+    show-sql: true
