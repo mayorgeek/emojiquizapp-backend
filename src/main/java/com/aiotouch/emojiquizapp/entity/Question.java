@@ -1,41 +1,55 @@
 package com.aiotouch.emojiquizapp.entity;
 
-import com.sun.istack.NotNull;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
-@ToString
-@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
+@Builder
 @Entity
 @Table(name = "questions")
 public class Question {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public Long id;
 
-    @NotNull
-    @Column(name = "image_path")
+
+    @Column(
+            name = "image_path",
+            nullable = false
+    )
     public String imagePath;
 
-    @NotNull
-    @Column(name = "option_1")
+
+    @Column(
+            name = "option_1",
+            nullable = false
+    )
     public String option1;
 
-    @NotNull
-    @Column(name = "option_2")
+
+    @Column(
+            name = "option_2",
+            nullable = false
+    )
     public String option2;
 
-    @NotNull
-    @Column(name = "option_3")
+
+    @Column(
+            name = "option_3",
+            nullable = false
+    )
     public String option3;
 
-    @NotNull
-    @Column(name = "answer")
+
+    @Column(
+            name = "answer",
+            nullable = false
+    )
     public String answer;
 
 }

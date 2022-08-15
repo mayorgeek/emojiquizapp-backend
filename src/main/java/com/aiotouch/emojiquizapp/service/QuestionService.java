@@ -1,19 +1,19 @@
 package com.aiotouch.emojiquizapp.service;
 
+import com.aiotouch.emojiquizapp.dto.QuestionDTO;
 import com.aiotouch.emojiquizapp.entity.Question;
-import com.aiotouch.emojiquizapp.model.QuestionModel;
 
 import java.util.List;
 
 public interface QuestionService {
 
-    Question createQuestion(QuestionModel question);
+    void createQuestion(QuestionDTO question);
 
     List<Question> getAllQuestions();
 
-    Question editQuestion(long questionId);
+    Question getQuestionById(long questionId);
 
-    void updateQuestion(long questionId, Question oldQuestion);
+    void updateQuestion(long questionId, QuestionDTO oldQuestion);
 
     void deleteQuestion(long id);
 }

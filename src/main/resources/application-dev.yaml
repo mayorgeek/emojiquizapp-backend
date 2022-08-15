@@ -5,8 +5,13 @@ spring:
     password: Adedorcas64#
 
   jpa:
+    hibernate:
+      ddl-auto: create-drop
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true
     show-sql: true
+
+  thymeleaf:
+    cache: false

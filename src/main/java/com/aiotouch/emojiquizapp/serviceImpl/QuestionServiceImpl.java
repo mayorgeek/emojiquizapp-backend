@@ -1,31 +1,34 @@
 package com.aiotouch.emojiquizapp.serviceImpl;
 
+import com.aiotouch.emojiquizapp.dto.QuestionDTO;
 import com.aiotouch.emojiquizapp.entity.Question;
 import com.aiotouch.emojiquizapp.exception.QuestionNotFoundException;
-import com.aiotouch.emojiquizapp.model.QuestionModel;
 import com.aiotouch.emojiquizapp.repository.QuestionRepository;
 import com.aiotouch.emojiquizapp.service.QuestionService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
+@Transactional
 @Service
 public class QuestionServiceImpl implements QuestionService {
 
     private final QuestionRepository questionRepo;
 
     @Override
-    public Question createQuestion(QuestionModel question) {
-        Question newQuestion = new Question();
-        newQuestion.setImagePath(question.getImagePath());
-        newQuestion.setOption1(question.getOption1());
-        newQuestion.setOption2(question.getOption2());
-        newQuestion.setOption3(question.getOption3());
-        newQuestion.setAnswer(question.getAnswer());
+    public void createQuestion(QuestionDTO question) {
+        Question newQuestion = Question.builder()
+                .imagePath(question.getImagePath())
+                .option1(question.getOption1())
+                .option2(question.getOption2())
+                .option3(question.getOption3())
+                .answer(question.getAnswer())
+                .build();
 
-        return questionRepo.save(newQuestion);
+        questionRepo.save(newQuestion);
     }
 
     @Override
@@ -34,13 +37,13 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public Question editQuestion(long questionId) {
+    public Question getQuestionById(long questionId) {
         return questionRepo.findById(questionId)
                             .orElseThrow(() -> { throw new QuestionNotFoundException("Question does not exist!"); } );
     }
 
     @Override
-    public void updateQuestion(long questionId, Question oldQuestion) {
+    public void updateQuestion(long questionId, QuestionDTO oldQuestion) {
         Question question = questionRepo.findById(questionId)
                     .orElseThrow(() -> { throw new QuestionNotFoundException("Question does not exist!"); });
 
@@ -55,8 +58,9 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public void deleteQuestion(long id) {
-        Question question = questionRepo.findById(id)
+        questionRepo.findById(id)
                 .orElseThrow(() -> { throw new QuestionNotFoundException("This question does not exist"); });
-        questionRepo.delete(question);
+
+        questionRepo.deleteById(id);
     }
 }

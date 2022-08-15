@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Question - Emojiquizapp</title>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}">
+</head>
+<body>
+
+<div class="w-100 container-lg">
+
+    <div class="mt-5 d-flex align-items-center">
+        <a th:href="@{/cpanel/questions/}" class="btn btn-light me-5">Back</a>
+        <h1 class="fs-3 fw-semibold">Edit Question</h1>
+    </div>
+
+    <div class="mt-5 mb-5 row w-lg-50 mx-lg-auto px-2">
+        <div class="col-lg">
+            <div class="card">
+                <div class="card-body p-4">
+                    <form th:action="@{/cpanel/questions/{id}(id=${question.id})}" method="post" th:object="${question}">
+                        <h2 class="mb-5 fs-4 fw-semibold text-center">Edit A Question</h2>
+
+                        <div class="mb-3">
+                            <label for="imagePath" class="form-label">Image URL</label>
+                            <input th:field="*{imagePath}" type="text" class="form-control" id="imagePath">
+                        </div>
+                        <div class="mb-3">
+                            <label for="option1" class="form-label">Option1</label>
+                            <input th:field="*{option1}" type="text" class="form-control" id="option1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="option2" class="form-label">Option2</label>
+                            <input th:field="*{option2}" type="text" class="form-control" id="option2">
+                        </div>
+                        <div class="mb-3">
+                            <label for="option3" class="form-label">Option3</label>
+                            <input th:field="*{option3}" type="text" class="form-control" id="option3">
+                        </div>
+                        <div class="mb-3">
+                            <label for="answer" class="form-label">Answer</label>
+                            <input th:field="*{answer}" type="text" class="form-control" id="answer">
+                        </div>
+
+                        <button type="submit" class="btn btn-success btn-block">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script th:src="@{/webjars/jquery/3.6.0/js/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/5.2.0/js/bootstrap.min.js}"></script>
+</body>
+</html>
