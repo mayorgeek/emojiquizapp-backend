@@ -25,4 +25,9 @@ public class QuestionContoller {
                 .body(questionService.getAllQuestions());
     }
 
+    @GetMapping("/test")
+    public String hello() {
+        return "Hello Motherfuckkers";
+    }
+
 }
